@@ -18,7 +18,7 @@ public class FrameImage {
     }
 
     public void draw(Graphics2D g2, int x, int y){
-        g2.drawImage(image, x - image.getWidth()/2, y -yiamge.getHeight()/2, null );
+        g2.drawImage(image, x - image.getWidth()/2, y - iamge.getHeight()/2, null );
     }
 
     public int getIamgeWidth() {
