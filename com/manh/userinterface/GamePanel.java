@@ -1,9 +1,12 @@
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedIamge;
 import javax.swing.JPanel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.awt.Color;
 import java.awt.Graphics;
+import com.manh.effect.FrameImage;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
     
@@ -11,9 +14,18 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     private boolean isRunning;
     private InputManage inputManage;
 
+    FrameImage frame1;
+
     public GamePanel(){
         inputManage = new InputManage();
 
+        try {
+            BufferImage image  = ImageIO.read(new File("data/megasprite.png"));
+            BufferedImage image1 = image.getSubimage(529, 38, 70, 100);
+            frame1 = new FrameImage("frame1", image1);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
      
     }
 
@@ -21,6 +33,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     public void paint(Graphics g){
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        frame1.draw(g2, 30, 30);
 
     }
 
